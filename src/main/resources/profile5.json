@@ -1,0 +1,57 @@
+{
+    "_id": "5ba9e30b9be1e179f015d536",
+    "index": 4,
+    "guid": "8bf0002e-8a15-4944-bcd6-1b8be368aecd",
+    "isActive": true,
+    "balance": "$3,784.34",
+    "picture": "http://placehold.it/32x32",
+    "age": 36,
+    "eyeColor": "green",
+    "name": {
+      "first": "Richard",
+      "last": "Avila"
+    },
+    "company": "INRT",
+    "email": "richard.avila@inrt.io",
+    "phone": "+1 (821) 534-2203",
+    "address": "770 School Lane, Tilleda, Indiana, 1076",
+    "about": "Incididunt velit labore incididunt culpa adipisicing nostrud enim pariatur eu magna ipsum ad. Non reprehenderit in et ea. Est amet aute et elit labore est qui ad duis proident officia. Ullamco sunt incididunt est Lorem ea laboris ea officia id exercitation esse. Ea laborum non incididunt incididunt labore consequat. Irure mollit ea culpa sit dolor voluptate proident cupidatat occaecat id eiusmod exercitation cupidatat eu. In voluptate laborum adipisicing cillum adipisicing aliquip ullamco nulla pariatur tempor.",
+    "registered": "Monday, January 6, 2014 6:58 AM",
+    "latitude": "65.576088",
+    "longitude": "70.494425",
+    "tags": [
+      "nisi",
+      "amet",
+      "est",
+      "aliqua",
+      "minim"
+    ],
+    "range": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Tate Nolan"
+      },
+      {
+        "id": 1,
+        "name": "Hyde Cantu"
+      },
+      {
+        "id": 2,
+        "name": "Amy Blackburn"
+      }
+    ],
+    "greeting": "Hello, Richard! You have 5 unread messages.",
+    "favoriteFruit": "banana"
+  }

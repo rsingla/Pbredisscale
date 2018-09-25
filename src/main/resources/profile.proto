@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_outer_classname = "ProfileProto";
+
+message profile {
+   string _id = 22;
+   double index = 1;
+   string guid = 2;
+   bool isActive = 3;
+   string balance = 4;
+   string picture = 5;
+   double age = 6;
+   string eyeColor = 7;
+
+  message NAME {
+     string first = 1;
+     string last = 2;
+  }
+
+   NAME name = 8;
+   string company = 9;
+   string email = 10;
+   string phone = 11;
+   string address = 12;
+   string about = 13;
+   string registered = 14;
+   string latitude = 15;
+   string longitude = 16;
+  repeated string tags = 17;
+  repeated float range = 18;
+
+  message FRIENDS {
+     double id = 1;
+     string name = 2;
+  }
+
+  repeated FRIENDS friends = 19;
+   string greeting = 20;
+   string favoriteFruit = 21;
+}

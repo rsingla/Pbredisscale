@@ -1,0 +1,57 @@
+{
+    "_id": "5ba9e30b5c0f36a4726c1952",
+    "index": 0,
+    "guid": "ef6e81df-3e25-498e-a736-207e5bdcff38",
+    "isActive": true,
+    "balance": "$1,538.37",
+    "picture": "http://placehold.it/32x32",
+    "age": 21,
+    "eyeColor": "blue",
+    "name": {
+      "first": "Palmer",
+      "last": "Thornton"
+    },
+    "company": "OBLIQ",
+    "email": "palmer.thornton@obliq.me",
+    "phone": "+1 (941) 465-2249",
+    "address": "849 Stone Avenue, Mooresburg, South Carolina, 975",
+    "about": "Velit irure amet sunt in anim veniam officia amet incididunt labore. Aliqua velit labore fugiat minim sunt id elit commodo et anim fugiat mollit deserunt laboris. Cupidatat sint excepteur fugiat duis reprehenderit commodo incididunt excepteur tempor eiusmod.",
+    "registered": "Wednesday, May 23, 2018 12:30 AM",
+    "latitude": "54.873903",
+    "longitude": "-13.538609",
+    "tags": [
+      "dolore",
+      "fugiat",
+      "ut",
+      "ad",
+      "do"
+    ],
+    "range": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Nieves Castro"
+      },
+      {
+        "id": 1,
+        "name": "Jenna Harvey"
+      },
+      {
+        "id": 2,
+        "name": "Hilda Cortez"
+      }
+    ],
+    "greeting": "Hello, Palmer! You have 9 unread messages.",
+    "favoriteFruit": "banana"
+  }
