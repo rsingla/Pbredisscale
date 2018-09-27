@@ -23,3 +23,4 @@ Steps as followed
 - https://www.site24x7.com/tools/json-to-protobuf.html
 - Install protoc on local system using brew install protoc
 - protoc --java_out=../model profile.proto
+- Create standard Data layer and Controller layer. 

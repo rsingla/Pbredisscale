@@ -2,33 +2,44 @@ package io.apicode.scale.service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Optional;
 
 import org.apache.commons.io.IOUtils;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.google.protobuf.util.JsonFormat;
 
+import io.apicode.log.FluentLog;
+import io.apicode.log.LogLevel;
 import io.apicode.model.ProfileProto;
+import io.apicode.model.ProfileProto.profile;
 import io.apicode.model.ProfileProto.profile.Builder;
 
-@Service
+@Component
 public class DataService {
 
-	public ProfileProto.profile getData() throws IOException {
+	@Autowired
+	ProfileRepository profileRepository;
+
+	@FluentLog(message="Get Data at Data Service ", level=LogLevel.INFO)
+	public ProfileProto.profile getData(String profile) throws IOException {
 		Builder builder = ProfileProto.profile.newBuilder();
-		FileInputStream fis = new FileInputStream("src/main/resources/profile1.json");
+		FileInputStream fis = new FileInputStream("src/main/resources/" + profile + ".json");
 		String data = IOUtils.toString(fis, "UTF-8");
 		JsonFormat.parser().merge(data, builder);
+
+		profileRepository.save(builder.build());
 
 		return builder.build();
 	}
 
-	public String getDataAsString() throws IOException {
+	@FluentLog(message="Get Data as String at Data Service ", level=LogLevel.INFO)
+	public profile getDataAsString(String email) throws IOException {
+		
+		Optional<profile> data = profileRepository.findById(email);
 
-		FileInputStream fis = new FileInputStream("src/main/resources/profile1.json");
-		String data = IOUtils.toString(fis, "UTF-8");
-
-		return data;
+		return data.get();
 	}
 
 }
