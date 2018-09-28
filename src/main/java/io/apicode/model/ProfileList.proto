@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_outer_classname = "ProfileListProto";
+
+import "Profile.proto";
+
+message ProfileList {
+
+repeated Profile Profile = 1;
+
+}

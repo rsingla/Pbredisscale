@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option java_outer_classname = "ProfileProto";
 
-message profile {
+message Profile {
    string _id = 22;
    double index = 1;
    string guid = 2;
@@ -12,12 +12,12 @@ message profile {
    double age = 6;
    string eyeColor = 7;
 
-  message NAME {
+  message Name {
      string first = 1;
      string last = 2;
   }
 
-   NAME name = 8;
+   Name name = 8;
    string company = 9;
    string email = 10;
    string phone = 11;
@@ -29,12 +29,12 @@ message profile {
   repeated string tags = 17;
   repeated float range = 18;
 
-  message FRIENDS {
+  message Friends {
      double id = 1;
      string name = 2;
   }
 
-  repeated FRIENDS friends = 19;
+  repeated Friends friends = 19;
    string greeting = 20;
    string favoriteFruit = 21;
 }

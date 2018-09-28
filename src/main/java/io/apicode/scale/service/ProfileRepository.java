@@ -14,13 +14,13 @@ import com.google.protobuf.TextFormat;
 import com.google.protobuf.TextFormat.ParseException;
 
 import io.apicode.model.ProfileProto;
-import io.apicode.model.ProfileProto.profile;
-import io.apicode.model.ProfileProto.profile.Builder;
+import io.apicode.model.ProfileProto.Profile;
+import io.apicode.model.ProfileProto.Profile.Builder;
 import net.openhft.hashing.LongHashFunction;
 import redis.clients.jedis.Jedis;
 
 @Repository
-public class ProfileRepository implements CrudRepository<ProfileProto.profile, String> {
+public class ProfileRepository implements CrudRepository<ProfileProto.Profile, String> {
 
 	@Autowired
 	Jedis jedisConnection;
@@ -34,7 +34,7 @@ public class ProfileRepository implements CrudRepository<ProfileProto.profile, S
 	}
 
 	@Override
-	public void delete(ProfileProto.profile person) {
+	public void delete(ProfileProto.Profile person) {
 		Long KEY = hashKey(person.getEmail());
 		jedisConnection.hdel(PROFILES_KEY+KEY, person.getEmail());
 	}
@@ -55,17 +55,17 @@ public class ProfileRepository implements CrudRepository<ProfileProto.profile, S
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends profile> entities) {
-		Iterator<? extends profile> profiles = entities.iterator();
+	public void deleteAll(Iterable<? extends Profile> entities) {
+		Iterator<? extends Profile> profiles = entities.iterator();
 
 		while (profiles.hasNext()) {
-			profile p = profiles.next();
+			Profile p = profiles.next();
 			jedisConnection.hdel(PROFILES_KEY, p.getEmail());
 		}
 	}
 
 	@Override
-	public <S extends profile> Iterable<S> saveAll(Iterable<S> entities) {
+	public <S extends Profile> Iterable<S> saveAll(Iterable<S> entities) {
 		List<S> result = new ArrayList<>();
 
 		for (S entity : entities) {
@@ -77,7 +77,7 @@ public class ProfileRepository implements CrudRepository<ProfileProto.profile, S
 	}
 
 	@Override
-	public Optional<profile> findById(String email) {
+	public Optional<Profile> findById(String email) {
 		return Optional.of(getProfile(email));
 	}
 
@@ -91,11 +91,11 @@ public class ProfileRepository implements CrudRepository<ProfileProto.profile, S
 		return KEY;
 	}
 	
-	private profile getProfile(String email) {
+	private Profile getProfile(String email) {
 		Long KEY = LongHashFunction.xx().hashChars(email);
 		String value = jedisConnection.hget(PROFILES_KEY+KEY, email);
 		
-		Builder retrieved = profile.newBuilder();
+		Builder retrieved = Profile.newBuilder();
 		
 		try {
 			TextFormat.merge(value, retrieved);
@@ -107,17 +107,17 @@ public class ProfileRepository implements CrudRepository<ProfileProto.profile, S
 	
 	
 	@Override
-	public Iterable<profile> findAllById(Iterable<String> emails) {
-		List<profile> listProfiles = new ArrayList<>();
+	public Iterable<Profile> findAllById(Iterable<String> emails) {
+		List<Profile> listProfiles = new ArrayList<>();
 		for (String email : emails) {
-			profile p = getProfile(email);
+			Profile p = getProfile(email);
 			listProfiles.add(p);
 		}
 		return listProfiles;
 	}
 
 	@Override
-	public Iterable<ProfileProto.profile> findAll() {
+	public Iterable<ProfileProto.Profile> findAll() {
 		
 		return null;
 		
@@ -125,7 +125,7 @@ public class ProfileRepository implements CrudRepository<ProfileProto.profile, S
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public profile save(profile proObj) {
+	public Profile save(Profile proObj) {
 		String build = TextFormat.printToString(proObj);
 		Long KEY = LongHashFunction.xx().hashChars(proObj.getEmail());
 		

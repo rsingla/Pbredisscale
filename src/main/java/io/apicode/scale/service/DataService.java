@@ -2,6 +2,7 @@ package io.apicode.scale.service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.io.IOUtils;
@@ -12,9 +13,11 @@ import com.google.protobuf.util.JsonFormat;
 
 import io.apicode.log.FluentLog;
 import io.apicode.log.LogLevel;
+import io.apicode.model.ProfileListProto;
+import io.apicode.model.ProfileListProto.ProfileList;
 import io.apicode.model.ProfileProto;
-import io.apicode.model.ProfileProto.profile;
-import io.apicode.model.ProfileProto.profile.Builder;
+import io.apicode.model.ProfileProto.Profile;
+import io.apicode.model.ProfileProto.Profile.Builder;
 
 @Component
 public class DataService {
@@ -22,9 +25,9 @@ public class DataService {
 	@Autowired
 	ProfileRepository profileRepository;
 
-	@FluentLog(message="Get Data at Data Service ", level=LogLevel.INFO)
-	public ProfileProto.profile getData(String profile) throws IOException {
-		Builder builder = ProfileProto.profile.newBuilder();
+	@FluentLog(message = "Get Data at Data Service ", level = LogLevel.INFO)
+	public ProfileProto.Profile getData(String profile) throws IOException {
+		Builder builder = ProfileProto.Profile.newBuilder();
 		FileInputStream fis = new FileInputStream("src/main/resources/" + profile + ".json");
 		String data = IOUtils.toString(fis, "UTF-8");
 		JsonFormat.parser().merge(data, builder);
@@ -34,12 +37,33 @@ public class DataService {
 		return builder.build();
 	}
 
-	@FluentLog(message="Get Data as String at Data Service ", level=LogLevel.INFO)
-	public profile getDataAsString(String email) throws IOException {
-		
-		Optional<profile> data = profileRepository.findById(email);
+	@FluentLog(message = "Get Data as String at Data Service ", level = LogLevel.INFO)
+	public Profile getDataAsString(String email) throws IOException {
+
+		Optional<Profile> data = profileRepository.findById(email);
 
 		return data.get();
+	}
+
+	@FluentLog(message = "Load all Data as String at Data Service ", level = LogLevel.INFO)
+	public ProfileList loadAllFile(List<String> files) throws IOException {
+		ProfileList profilelist = null;
+		ProfileList.Builder profileListBuilder = ProfileListProto.ProfileList.newBuilder();
+		for (var fileName : files) {
+			FileInputStream fis = new FileInputStream("src/main/resources/" + fileName);
+			String data = IOUtils.toString(fis, "UTF-8");
+			JsonFormat.parser().merge(data, profileListBuilder);
+
+			profilelist = profileListBuilder.build();
+
+			for (ProfileProto.Profile profile : profilelist.getProfileList()) {
+				Builder builder = ProfileProto.Profile.newBuilder();
+				System.out.println(profile);
+				profileRepository.save(profile);
+			}
+
+		}
+		return profileListBuilder.build();
 	}
 
 }

@@ -1,6 +1,7 @@
 package io.apicode.scale.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import com.google.protobuf.util.JsonFormat.Printer;
 
 import io.apicode.log.FluentLog;
 import io.apicode.log.LogLevel;
+import io.apicode.model.ProfileListProto.ProfileList;
 import io.apicode.model.ProfileProto;
 import io.apicode.scale.service.DataService;
 
@@ -25,25 +27,35 @@ public class ProfileController {
 
 	FluentLogger LOG = FluentLogger.forEnclosingClass();
 
-	
 	@GetMapping("/profile/proto/{id}")
-	@FluentLog(message="Controller method for get profile", level=LogLevel.FINE)
+	@FluentLog(message = "Controller method for get profile", level = LogLevel.INFO)
 	public ResponseEntity<String> getProfile(@PathVariable String id) throws IOException {
-		ProfileProto.profile profileData = dataService.getData(id);
+		ProfileProto.Profile profileData = dataService.getData(id);
+
+		Printer jsonFormat = JsonFormat.printer().includingDefaultValueFields();
+
+		LOG.atInfo().log(jsonFormat.toString());
+
+		return ResponseEntity.ok(jsonFormat.print(profileData));
+	}
+
+	@GetMapping("/profile/{email}")
+	@FluentLog(message = "Controller method for getProfileByEmail", level = LogLevel.INFO)
+	public ResponseEntity<String> getProfileByEmail(@PathVariable String email) throws IOException {
+		ProfileProto.Profile profileData = dataService.getDataAsString(email);
 
 		Printer jsonFormat = JsonFormat.printer().includingDefaultValueFields();
 
 		return ResponseEntity.ok(jsonFormat.print(profileData));
 	}
 
-	@GetMapping("/profile/{email}")
-	@FluentLog(message="Controller method for getProfileByEmail", level=LogLevel.FINE)
-	public ResponseEntity<String> getProfileByEmail(@PathVariable String email) throws IOException {
-		ProfileProto.profile profileData = dataService.getDataAsString(email);
+	@GetMapping("/load/all")
+	@FluentLog(message = "Load all data for Profile", level = LogLevel.INFO)
+	public ResponseEntity<ProfileList> loadAll() throws IOException {
+		List<String> fileName = List.of("file1.json", "file.json", "file2.json", "file3.json");
+		ProfileList profileList = dataService.loadAllFile(fileName);
 
-		Printer jsonFormat = JsonFormat.printer().includingDefaultValueFields();
-
-		return ResponseEntity.ok(jsonFormat.print(profileData));
+		return ResponseEntity.ok(profileList);
 	}
 
 }
