@@ -18,8 +18,10 @@ import io.apicode.log.LogLevel;
 import io.apicode.model.ProfileListProto.ProfileList;
 import io.apicode.model.ProfileProto;
 import io.apicode.scale.service.DataService;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
 public class ProfileController {
 
 	@Autowired
@@ -52,7 +54,7 @@ public class ProfileController {
 	@GetMapping("/load/all")
 	@FluentLog(message = "Load all data for Profile", level = LogLevel.INFO)
 	public ResponseEntity<ProfileList> loadAll() throws IOException {
-		List<String> fileName = List.of("file1.json", "file.json", "file2.json", "file3.json");
+		List<String> fileName = List.of("file1.json","file2.json","file3.json");
 		ProfileList profileList = dataService.loadAllFile(fileName);
 
 		return ResponseEntity.ok(profileList);

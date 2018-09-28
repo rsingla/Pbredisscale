@@ -6,6 +6,6 @@ import "Profile.proto";
 
 message ProfileList {
 
-repeated Profile Profile = 1;
-
+     	repeated Profile profiles = 1;
 }
+

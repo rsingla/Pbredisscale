@@ -5,6 +5,7 @@ import java.net.UnknownHostException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 
 import io.apicode.log.FluentLog;
@@ -12,10 +13,9 @@ import io.apicode.log.LogLevel;
 import redis.clients.jedis.Jedis;
 
 @SpringBootApplication
+@EnableAspectJAutoProxy
 public class PbredisscaleApplication {
 	
-	
-
 	public static void main(String[] args) {
 		SpringApplication.run(PbredisscaleApplication.class, args);
 	}

@@ -1,57 +1,57 @@
 {
-    "_id": "5ba9e30bf9b803794aded47d",
-    "index": 2,
-    "guid": "879ce7d0-7bee-49cd-8913-322c0e1e53c0",
-    "isActive": false,
-    "balance": "$1,890.69",
-    "picture": "http://placehold.it/32x32",
-    "age": 39,
-    "eyeColor": "brown",
-    "name": {
-      "first": "Francis",
-      "last": "Snyder"
-    },
-    "company": "FOSSIEL",
-    "email": "francis.snyder@fossiel.ca",
-    "phone": "+1 (845) 589-2652",
-    "address": "580 Willmohr Street, Cumberland, Rhode Island, 6391",
-    "about": "Eu ipsum ullamco consectetur elit ex. Ullamco fugiat ad culpa sit ipsum incididunt. Aliquip enim enim exercitation eiusmod. Aliqua ullamco nisi et culpa pariatur reprehenderit cillum ipsum sunt. Adipisicing non minim in sint nisi elit aliqua aliqua id. Nostrud culpa ut ea anim. Aliqua reprehenderit veniam laboris occaecat aute qui nostrud aute id est non exercitation irure.",
-    "registered": "Tuesday, July 19, 2016 4:27 PM",
-    "latitude": "10.33261",
-    "longitude": "147.5933",
-    "tags": [
-      "ex",
-      "exercitation",
-      "eiusmod",
-      "proident",
-      "labore"
-    ],
-    "range": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Reyes Patrick"
-      },
-      {
-        "id": 1,
-        "name": "Phoebe Harmon"
-      },
-      {
-        "id": 2,
-        "name": "Morales Williamson"
-      }
-    ],
-    "greeting": "Hello, Francis! You have 7 unread messages.",
-    "favoriteFruit": "banana"
-  }
+	"_id": "5ba9e30bf9b803794aded47d",
+	"index": 2,
+	"guid": "879ce7d0-7bee-49cd-8913-322c0e1e53c0",
+	"isActive": false,
+	"balance": "$1,890.69",
+	"picture": "http://placehold.it/32x32",
+	"age": 39,
+	"eyeColor": "brown",
+	"name": {
+		"first": "Francis",
+		"last": "Snyder"
+	},
+	"company": "FOSSIEL",
+	"email": "francis.snyder@fossiel.ca",
+	"phone": "+1 (845) 589-2652",
+	"address": "580 Willmohr Street, Cumberland, Rhode Island, 6391",
+	"about": "Eu ipsum ullamco consectetur elit ex. Ullamco fugiat ad culpa sit ipsum incididunt. Aliquip enim enim exercitation eiusmod. Aliqua ullamco nisi et culpa pariatur reprehenderit cillum ipsum sunt. Adipisicing non minim in sint nisi elit aliqua aliqua id. Nostrud culpa ut ea anim. Aliqua reprehenderit veniam laboris occaecat aute qui nostrud aute id est non exercitation irure.",
+	"registered": "Tuesday, July 19, 2016 4:27 PM",
+	"latitude": "10.33261",
+	"longitude": "147.5933",
+	"tags": [
+		"ex",
+		"exercitation",
+		"eiusmod",
+		"proident",
+		"labore"
+	],
+	"range": [
+		0,
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		7,
+		8,
+		9
+	],
+	"friends": [
+		{
+			"id": 0,
+			"name": "Reyes Patrick"
+		},
+		{
+			"id": 1,
+			"name": "Phoebe Harmon"
+		},
+		{
+			"id": 2,
+			"name": "Morales Williamson"
+		}
+	],
+	"greeting": "Hello, Francis! You have 7 unread messages.",
+	"favoriteFruit": "banana"
+}

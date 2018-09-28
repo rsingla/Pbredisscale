@@ -16,10 +16,12 @@ import com.google.protobuf.TextFormat.ParseException;
 import io.apicode.model.ProfileProto;
 import io.apicode.model.ProfileProto.Profile;
 import io.apicode.model.ProfileProto.Profile.Builder;
+import lombok.extern.slf4j.Slf4j;
 import net.openhft.hashing.LongHashFunction;
 import redis.clients.jedis.Jedis;
 
 @Repository
+@Slf4j
 public class ProfileRepository implements CrudRepository<ProfileProto.Profile, String> {
 
 	@Autowired
@@ -133,7 +135,5 @@ public class ProfileRepository implements CrudRepository<ProfileProto.Profile, S
 
 		return proObj;
 	}
-
-
 
 }

@@ -13,13 +13,14 @@ import com.google.protobuf.util.JsonFormat;
 
 import io.apicode.log.FluentLog;
 import io.apicode.log.LogLevel;
-import io.apicode.model.ProfileListProto;
 import io.apicode.model.ProfileListProto.ProfileList;
 import io.apicode.model.ProfileProto;
 import io.apicode.model.ProfileProto.Profile;
 import io.apicode.model.ProfileProto.Profile.Builder;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class DataService {
 
 	@Autowired
@@ -47,23 +48,19 @@ public class DataService {
 
 	@FluentLog(message = "Load all Data as String at Data Service ", level = LogLevel.INFO)
 	public ProfileList loadAllFile(List<String> files) throws IOException {
-		ProfileList profilelist = null;
-		ProfileList.Builder profileListBuilder = ProfileListProto.ProfileList.newBuilder();
+		ProfileList.Builder profileCompleteList = ProfileList.newBuilder();	
 		for (var fileName : files) {
+			ProfileList.Builder profileList = ProfileList.newBuilder();	
 			FileInputStream fis = new FileInputStream("src/main/resources/" + fileName);
 			String data = IOUtils.toString(fis, "UTF-8");
-			JsonFormat.parser().merge(data, profileListBuilder);
-
-			profilelist = profileListBuilder.build();
-
-			for (ProfileProto.Profile profile : profilelist.getProfileList()) {
-				Builder builder = ProfileProto.Profile.newBuilder();
-				System.out.println(profile);
-				profileRepository.save(profile);
+			JsonFormat.parser().merge(data, profileList);
+			for (Profile pf : profileList.getProfilesList()) {
+				profileRepository.save(pf);
 			}
+			profileCompleteList.addAllProfiles(profileList.getProfilesList());
 
 		}
-		return profileListBuilder.build();
+		return profileCompleteList.build();
 	}
 
 }

@@ -2,8 +2,14 @@ package io.apicode.log;
 
 import java.lang.annotation.Annotation;
 
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+
 import com.google.common.flogger.FluentLogger;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@AutoConfigureBefore
 public class FluentLogImpl implements FluentLog {
 
 	private static final FluentLogger logger = FluentLogger.forEnclosingClass();
