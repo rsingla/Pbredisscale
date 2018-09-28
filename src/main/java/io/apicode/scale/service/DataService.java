@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 
 import com.google.protobuf.util.JsonFormat;
 
-import io.apicode.log.FluentLog;
-import io.apicode.log.LogLevel;
 import io.apicode.model.ProfileListProto.ProfileList;
 import io.apicode.model.ProfileProto;
 import io.apicode.model.ProfileProto.Profile;
 import io.apicode.model.ProfileProto.Profile.Builder;
+import io.apicode.scale.FluentLog;
+import io.apicode.scale.LogLevel;
 import lombok.extern.slf4j.Slf4j;
 
 @Component

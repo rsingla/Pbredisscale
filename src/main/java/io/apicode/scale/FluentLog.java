@@ -1,4 +1,4 @@
-package io.apicode.log;
+package io.apicode.scale;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

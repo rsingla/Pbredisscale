@@ -1,9 +1,13 @@
-[
-	{
-		
-	}}',index:'{{index()}}',guid:'{{guid()}}',isActive:'{{bool()}}',balance:'{{floating(1000,4000,2,"$0,0.00")}}',picture:
-	'http://placehold.it/32x32'
-,
+# Link: Visit to use below template - https://next.json-generator.com/4JBhnCUtH
+{
+ profiles: [{
+    'repeat(1, 100)': {
+      _id: '{{objectId()}}',
+      index: '{{index(300,400)}}',
+      guid: '{{guid()}}',
+      isActive: '{{bool()}}',
+      balance: '{{floating(1000, 4000, 2, "$0,0.00")}}',
+      picture: 'http://placehold.it/32x32',
       age: '{{integer(20, 40)}}',
       eyeColor: '{{random("blue", "brown", "green")}}',
       name: {
@@ -44,3 +48,4 @@
     }
   }
 ]
+}

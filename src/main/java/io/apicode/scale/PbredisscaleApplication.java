@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 
-import io.apicode.log.FluentLog;
-import io.apicode.log.LogLevel;
 import redis.clients.jedis.Jedis;
 
 @SpringBootApplication
