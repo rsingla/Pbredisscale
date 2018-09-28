@@ -13,7 +13,7 @@ import redis.clients.jedis.Jedis;
 @SpringBootApplication
 @EnableAspectJAutoProxy
 public class PbredisscaleApplication {
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(PbredisscaleApplication.class, args);
 	}
@@ -24,9 +24,9 @@ public class PbredisscaleApplication {
 	}
 
 	@Bean
-	@FluentLog(message="Created Jedis Connection", level=LogLevel.INFO)
+	@FluentLog(message = "Created Jedis Connection", level = LogLevel.INFO)
 	public Jedis jedisConnection() throws UnknownHostException {
-		//Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
+		// Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
 		// Jedis Cluster will attempt to discover cluster nodes automatically
 		Jedis jedis = new Jedis("127.0.0.1", 6379);
 		return jedis;

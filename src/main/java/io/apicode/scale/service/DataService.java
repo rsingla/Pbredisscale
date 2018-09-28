@@ -48,9 +48,9 @@ public class DataService {
 
 	@FluentLog(message = "Load all Data as String at Data Service ", level = LogLevel.INFO)
 	public ProfileList loadAllFile(List<String> files) throws IOException {
-		ProfileList.Builder profileCompleteList = ProfileList.newBuilder();	
+		ProfileList.Builder profileCompleteList = ProfileList.newBuilder();
 		for (var fileName : files) {
-			ProfileList.Builder profileList = ProfileList.newBuilder();	
+			ProfileList.Builder profileList = ProfileList.newBuilder();
 			FileInputStream fis = new FileInputStream("src/main/resources/" + fileName);
 			String data = IOUtils.toString(fis, "UTF-8");
 			JsonFormat.parser().merge(data, profileList);

@@ -10,7 +10,7 @@ public class FluentLogImpl implements FluentLog {
 
 	private String message;
 	private LogLevel logLevel;
-	
+
 	@Override
 	public Class<? extends Annotation> annotationType() {
 		return annotationType();

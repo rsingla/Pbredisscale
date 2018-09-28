@@ -29,7 +29,6 @@ public class ProfileRepository implements CrudRepository<ProfileProto.Profile, S
 
 	public static final String PROFILES_KEY = "profile";
 
-
 	@Override
 	public long count() {
 		return jedisConnection.pfcount(PROFILES_KEY);
@@ -38,7 +37,7 @@ public class ProfileRepository implements CrudRepository<ProfileProto.Profile, S
 	@Override
 	public void delete(ProfileProto.Profile person) {
 		Long KEY = hashKey(person.getEmail());
-		jedisConnection.hdel(PROFILES_KEY+KEY, person.getEmail());
+		jedisConnection.hdel(PROFILES_KEY + KEY, person.getEmail());
 	}
 
 	@Override
@@ -53,7 +52,7 @@ public class ProfileRepository implements CrudRepository<ProfileProto.Profile, S
 	@Override
 	public void deleteById(String email) {
 		Long KEY = hashKey(email);
-		jedisConnection.hdel(PROFILES_KEY+KEY, email);
+		jedisConnection.hdel(PROFILES_KEY + KEY, email);
 	}
 
 	@Override
@@ -85,20 +84,20 @@ public class ProfileRepository implements CrudRepository<ProfileProto.Profile, S
 
 	@Override
 	public boolean existsById(String email) {
-		return jedisConnection.hexists(PROFILES_KEY+hashKey(email), email);
+		return jedisConnection.hexists(PROFILES_KEY + hashKey(email), email);
 	}
 
 	private Long hashKey(String insertItem) {
 		Long KEY = LongHashFunction.xx().hashChars(insertItem);
 		return KEY;
 	}
-	
+
 	private Profile getProfile(String email) {
 		Long KEY = LongHashFunction.xx().hashChars(email);
-		String value = jedisConnection.hget(PROFILES_KEY+KEY, email);
-		
+		String value = jedisConnection.hget(PROFILES_KEY + KEY, email);
+
 		Builder retrieved = Profile.newBuilder();
-		
+
 		try {
 			TextFormat.merge(value, retrieved);
 		} catch (ParseException e) {
@@ -106,8 +105,7 @@ public class ProfileRepository implements CrudRepository<ProfileProto.Profile, S
 		}
 		return retrieved.build();
 	}
-	
-	
+
 	@Override
 	public Iterable<Profile> findAllById(Iterable<String> emails) {
 		List<Profile> listProfiles = new ArrayList<>();
@@ -120,9 +118,9 @@ public class ProfileRepository implements CrudRepository<ProfileProto.Profile, S
 
 	@Override
 	public Iterable<ProfileProto.Profile> findAll() {
-		
+
 		return null;
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -130,8 +128,8 @@ public class ProfileRepository implements CrudRepository<ProfileProto.Profile, S
 	public Profile save(Profile proObj) {
 		String build = TextFormat.printToString(proObj);
 		Long KEY = LongHashFunction.xx().hashChars(proObj.getEmail());
-		
-		jedisConnection.hset(PROFILES_KEY+KEY, proObj.getEmail(), build);
+
+		jedisConnection.hset(PROFILES_KEY + KEY, proObj.getEmail(), build);
 
 		return proObj;
 	}
