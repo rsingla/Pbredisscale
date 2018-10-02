@@ -1,16 +1,17 @@
-//package io.apicode.scale.test;
+// package io.apicode.scale.test;
 //
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.context.junit4.SpringRunner;
+// import org.junit.Test;
+// import org.junit.runner.RunWith;
+// import org.springframework.boot.test.context.SpringBootTest;
+// import org.springframework.test.context.junit4.SpringRunner;
 //
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
-//public class ProtobufRedisApplicationTest {
+// @RunWith(SpringRunner.class)
+// @SpringBootTest
+// public class ProtobufRedisApplicationTest {
 //
 //	@Test
 //	public void contextLoads() {
 //	}
 //
-//}
+// }
+//

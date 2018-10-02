@@ -9,8 +9,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface FluentLog {
 
-	String message() default "";
+  String message() default "";
 
-	LogLevel level() default LogLevel.ALL;
-
+  LogLevel level() default LogLevel.ALL;
 }

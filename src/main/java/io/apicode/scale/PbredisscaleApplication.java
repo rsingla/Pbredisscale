@@ -1,35 +1,29 @@
 package io.apicode.scale;
 
 import java.net.UnknownHostException;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
-
 import redis.clients.jedis.Jedis;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy
 public class PbredisscaleApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PbredisscaleApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(PbredisscaleApplication.class, args);
+  }
 
-	@Bean
-	ProtobufHttpMessageConverter protobufHttpMessageConverter() {
-		return new ProtobufHttpMessageConverter();
-	}
+  @Bean
+  ProtobufHttpMessageConverter protobufHttpMessageConverter() {
+    return new ProtobufHttpMessageConverter();
+  }
 
-	@Bean
-	@FluentLog(message = "Created Jedis Connection", level = LogLevel.INFO)
-	public Jedis jedisConnection() throws UnknownHostException {
-		// Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
-		// Jedis Cluster will attempt to discover cluster nodes automatically
-		Jedis jedis = new Jedis("127.0.0.1", 6379);
-		return jedis;
-	}
-
+  @Bean
+  public Jedis jedisConnection() throws UnknownHostException {
+    Jedis jedis = new Jedis("127.0.0.1", 6379);
+    return jedis;
+  }
 }

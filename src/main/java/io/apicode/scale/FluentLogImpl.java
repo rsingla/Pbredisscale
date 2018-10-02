@@ -1,30 +1,34 @@
 package io.apicode.scale;
 
-import java.lang.annotation.Annotation;
-
 import com.google.common.flogger.FluentLogger;
+import java.lang.annotation.Annotation;
 
 public class FluentLogImpl implements FluentLog {
 
-	private static final FluentLogger LOG = FluentLogger.forEnclosingClass();
+  private static final FluentLogger LOG = FluentLogger.forEnclosingClass();
 
-	private String message;
-	private LogLevel logLevel;
+  @Override
+  public Class<? extends Annotation> annotationType() {
+    Class method = this.getClass();
+    Annotation annotation = method.getAnnotation(FluentLog.class);
 
-	@Override
-	public Class<? extends Annotation> annotationType() {
-		return annotationType();
-	}
+    if (annotation instanceof FluentLog) {
+      FluentLog myAnnotation = (FluentLog) annotation;
+      System.out.println("name: " + myAnnotation.message());
+      System.out.println("value: " + myAnnotation.level());
+      LOG.at(myAnnotation.level().level).log(myAnnotation.message());
+    }
 
-	@Override
-	public String message() {
-		LOG.at(logLevel.level).log(message);
-		return null;
-	}
+    return annotationType();
+  }
 
-	@Override
-	public LogLevel level() {
-		return logLevel;
-	}
+  @Override
+  public String message() {
+    return "";
+  }
 
+  @Override
+  public LogLevel level() {
+    return LogLevel.INFO;
+  }
 }
