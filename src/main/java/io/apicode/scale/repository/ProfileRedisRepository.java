@@ -1,4 +1,4 @@
-package io.apicode.scale.service;
+package io.apicode.scale.repository;
 
 import com.google.protobuf.TextFormat;
 import com.google.protobuf.TextFormat.ParseException;
@@ -19,7 +19,7 @@ import redis.clients.jedis.Jedis;
 
 @Repository
 @Slf4j
-public class ProfileRepository implements CrudRepository<ProfileProto.Profile, String> {
+public class ProfileRedisRepository implements CrudRepository<ProfileProto.Profile, String> {
 
   @Autowired Jedis jedisConnection;
 

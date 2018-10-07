@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PbredisscaleApplication<protobufredis>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "io.apicode.scale.PbredisscaleApplication",
+            "projectName": "protobufredis",
+            "args": ""
+        }
+    ]
+}

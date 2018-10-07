@@ -4,12 +4,12 @@ import java.net.UnknownHostException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import redis.clients.jedis.Jedis;
 
 @SpringBootApplication
-@EnableAspectJAutoProxy
+@EnableJpaRepositories
 public class PbredisscaleApplication {
 
   public static void main(String[] args) {

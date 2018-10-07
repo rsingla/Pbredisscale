@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "protobufredis",
+                "projectName": "protobufredis",
+                "workingDirectory": "/Users/rajeevsingla/Documents/workspace-sts-3.9.6.RELEASE/Pbredisscale",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "protobufredis",
+                "projectName": "protobufredis",
+                "workingDirectory": "/Users/rajeevsingla/Documents/workspace-sts-3.9.6.RELEASE/Pbredisscale",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

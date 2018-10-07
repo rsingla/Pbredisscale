@@ -7,6 +7,7 @@ import io.apicode.model.ProfileProto.Profile;
 import io.apicode.model.ProfileProto.Profile.Builder;
 import io.apicode.scale.FluentLog;
 import io.apicode.scale.LogLevel;
+import io.apicode.scale.repository.ProfileRedisRepository;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
@@ -18,9 +19,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class DataService {
+public class RedisDataService {
 
-  @Autowired ProfileRepository profileRepository;
+  @Autowired ProfileRedisRepository profileRedisRepository;
 
   @FluentLog(message = "Get Data at Data Service ", level = LogLevel.INFO)
   public ProfileProto.Profile getData(String profile) throws IOException {
@@ -29,7 +30,7 @@ public class DataService {
     String data = IOUtils.toString(fis, "UTF-8");
     JsonFormat.parser().merge(data, builder);
     // Saving in Redis
-    profileRepository.save(builder.build());
+    profileRedisRepository.save(builder.build());
 
     return builder.build();
   }
@@ -37,7 +38,7 @@ public class DataService {
   @FluentLog(message = "Get Data as String at Data Service ", level = LogLevel.INFO)
   public Profile getDataAsString(String email) throws IOException {
 
-    Optional<Profile> data = profileRepository.findById(email);
+    Optional<Profile> data = profileRedisRepository.findById(email);
 
     return data.get();
   }
@@ -45,7 +46,7 @@ public class DataService {
   @FluentLog(message = "Get Data as String at Data Service ", level = LogLevel.INFO)
   public Profile getProfileObject(String email) throws IOException {
 
-    Optional<Profile> data = profileRepository.findProfileProtoByEmail(email);
+    Optional<Profile> data = profileRedisRepository.findProfileProtoByEmail(email);
 
     return data.get();
   }
@@ -59,7 +60,7 @@ public class DataService {
       String data = IOUtils.toString(fis, "UTF-8");
       JsonFormat.parser().merge(data, profileList);
       for (Profile pf : profileList.getProfilesList()) {
-        profileRepository.save(pf);
+        profileRedisRepository.save(pf);
       }
       profileCompleteList.addAllProfiles(profileList.getProfilesList());
     }
